@@ -1,0 +1,63 @@
+ <select id="resource">
+    <option value="0">Prompt to select resource...</option>
+    <option value="1">First option</option>
+    <option value="2">Second option</option>
+</select> 
+
+
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.id === "resource") {
+            const chosenOption = changeEvent.target.value
+            console.log(chosenOption)  // "1" or "2"
+        }
+    }
+)
+
+Note that you can assign a unique id attribute to a <select> element, whereas you need to use the name attribute when using radio buttons.
+
+Import those four modules into the module you created in step one and interpolate them in the appropriate places in the overall HTML structure.
+
+Example for Technologies import
+import { Technologies } from "./Technologies.js"
+Return an <h2> heading from each module's component function to verify that each one is imported and returning a value.
+
+Example for Technologies.js
+export const Technologies = () => {
+    return `<h2>Technologies</h2>`
+}
+
+export const Technologies = () => {
+    let html = "<h2>Technologies</h2>"
+
+    html += '<select id="tech">'
+    html += '<option value="0">Select a technology package</option>'
+
+    const arrayOfOptions = techs.map( (tech) => {
+            return `<option value="${tech.id}">${tech.package}</option>`
+        }
+    )
+
+    html += arrayOfOptions.join("")
+    html += "</select>"
+    return html
+}
+
+export const Technologies = () => {
+    return `<h2>Technologies</h2>
+        <select id="tech">
+            <option value="0">Select a technology package</option>
+            ${
+                techs.map(
+                    (tech) => {
+                        return `<option value="${tech.id}">${tech.package}</option>`
+                    }
+                ).join("")
+            }
+        </select>
+    `
+}
+
+setTechnology(parseInt(clickEvent.target.value))
+Also make sure you define a setter function for each user's choice to track that transient state.
